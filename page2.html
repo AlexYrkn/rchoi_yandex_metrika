@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Страница 2 — Тест переходов | Лаба по Метрике</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f5f5f5;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0077ff;
+            padding: 16px;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin-right: 16px;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #0077ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 999px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #005fcc;
+        }
+
+        footer {
+            padding: 16px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105677156', 'ym');
+
+        ym(105677156, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/105677156" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter --></head>
+
+<body>
+<header>
+    <a href="index.html">Главная</a>
+    <a href="page2.html">Страница 2</a>
+</header>
+
+<div class="container">
+    <h1>Страница 2 — Проверка навигации</h1>
+
+    <div class="card">
+        <p>
+            Это дополнительная страница, созданная специально для тестирования переходов между страницами в
+            Яндекс.Метрике. В вебвизоре будут отображаться:
+        </p>
+        <ul>
+            <li>переходы с главной страницы;</li>
+            <li>возврат на главную;</li>
+            <li>прокрутка контента;</li>
+            <li>клики по кнопкам.</li>
+        </ul>
+        <p>
+            Попросите пользователей перейти на эту страницу, пролистать её и нажать на кнопки.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Тестовые кнопки</h2>
+        <p>Нажатия фиксируются в вебвизоре и отчётах поведения.</p>
+        <p>
+            <a class="btn" href="#" onclick="alert('Спасибо за нажатие!')">Нажать кнопку</a>
+        </p>
+        <p>
+            <a class="btn" href="index.html">Вернуться на главную</a>
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Текст для прокрутки</h2>
+        <p>
+            Этот блок содержит расширенный текст, чтобы обеспечить возможность тестирования карты скроллинга и
+            визуализации пользовательского поведения.
+        </p>
+        <p>
+            Лаба предполагает анализ того, как движется пользователь по странице, какие элементы просматривает и
+            где задерживается. Вебвизор показывает реальную последовательность действий: движения мыши, клики,
+            фокус в полях и переходы на другие URL. Наличие двух страниц позволяет увидеть полноценный маршрут
+            пользователя.
+        </p>
+        <p>
+            Добавим немного лишнего текста, чтобы страница была достаточно длинной. Вы можете попросить знакомых
+            пролистать до самого низа и вернуться обратно, чтобы отчет выглядел полнее.
+        </p>
+        <p>
+            Поведение пользователей на второй странице может отличаться от главной: здесь меньше контента, но
+            больше принудительных действий (кнопки, переходы, возврат назад). Это даст разнообразие в записях
+            вебвизора и обеспечит качественный материал для анализа.
+        </p>
+        <p>
+            Конец страницы. Теперь можно перейти обратно или закрыть сайт — оба действия будут зафиксированы в отчётах.
+        </p>
+    </div>
+</div>
+
+<footer>
+    Учебный сайт — дополнительная страница для тестирования Метрики.
+</footer>
+
+</body>
+</html>
