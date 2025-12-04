@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Учебный сайт – Лаба по Яндекс.Метрике</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.5;
+            color: #222;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0077ff, #00b894);
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        nav {
+            margin-top: 10px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        main {
+            padding: 24px 0 40px 0;
+        }
+
+        section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        section h2 {
+            margin-bottom: 16px;
+            font-size: 22px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .hero-text p {
+            margin-bottom: 12px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #0077ff;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #ecf0f1;
+            color: #333;
+        }
+
+        .hero-mock {
+            background: #f0f6ff;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 13px;
+        }
+
+        .hero-mock-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-mock-line {
+            height: 8px;
+            border-radius: 999px;
+            background: #d0ddff;
+            margin-bottom: 6px;
+        }
+
+        .hero-mock-line.short {
+            max-width: 60%;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            padding: 16px;
+            font-size: 14px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .products-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .product {
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            padding: 16px;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .product-title {
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: #0077ff;
+        }
+
+        .long-text {
+            max-height: 450px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .long-text p {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+            gap: 24px;
+        }
+
+        form label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #d0d0d0;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        footer {
+            padding: 16px;
+            font-size: 12px;
+            text-align: center;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105677156', 'ym');
+
+        ym(105677156, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/105677156" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">Учебный сайт – Лаба по Яндекс.Метрике</div>
+        <nav>
+            <a href="#hero">Главная</a>
+            <a href="#features">Возможности</a>
+            <a href="#products">Моки товаров</a>
+            <a href="#scroll">Длинный текст (скролл)</a>
+            <a href="#contact">Форма обратной связи</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section id="hero">
+        <div class="hero">
+            <div class="hero-text">
+                <h2>Тестовый лендинг для лабораторной работы</h2>
+                <p>
+                    Это простой учебный сайт с несколькими блоками, карточками и формой.
+                    Он создан специально для отработки навыков работы с Яндекс.Метрикой:
+                    вебвизор, карта скроллинга и аналитика форм.
+                </p>
+                <p>
+                    Попросите знакомых покликать по кнопкам, пролистать страницу до конца
+                    и заполнить форму — вы увидите их действия в отчётах Метрики.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="hero-demo-btn">Посмотреть демо-клик</button>
+                    <button class="btn btn-secondary" id="hero-secondary-btn">Узнать больше</button>
+                </div>
+            </div>
+            <div class="hero-mock">
+                <div class="hero-mock-title">Мок-виджет статистики</div>
+                <div class="hero-mock-line"></div>
+                <div class="hero-mock-line short"></div>
+                <div class="hero-mock-line"></div>
+                <div class="hero-mock-line short"></div>
+                <p style="margin-top: 10px; font-size: 12px; color: #555;">
+                    Здесь мог бы быть график, таблица или любой другой визуальный элемент.
+                    В рамках лабораторной это просто заглушка для имитации контента.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2>Возможности учебного сайта</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Карта скроллинга</h3>
+                <p>
+                    На странице есть длинный текстовый блок, до которого нужно
+                    пролистать. По данным Метрики вы увидите, докуда доходят
+                    реальные пользователи.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Аналитика форм</h3>
+                <p>
+                    Форма обратной связи позволяет посмотреть, какие поля
+                    заполняют пользователи, в каких полях бросают заполнение
+                    и сколько отправок формы было.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Вебвизор</h3>
+                <p>
+                    Вебвизор запишет отдельные сессии пользователей: движения
+                    мыши, клики, навигацию и заполнение формы. Можно будет
+                    визуально посмотреть, как люди взаимодействуют с сайтом.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <h2>Моки «товаров»</h2>
+        <div class="products-list">
+            <div class="product">
+                <div class="product-title">Тестовый продукт А</div>
+                <div>Краткое описание «товара» А. Просто текст-заглушка.</div>
+                <div class="product-price">990 ₽</div>
+                <button class="btn btn-primary product-btn" data-product="A">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <div class="product-title">Тестовый продукт B</div>
+                <div>Краткое описание «товара» B. Просто текст-заглушка.</div>
+                <div class="product-price">1490 ₽</div>
+                <button class="btn btn-primary product-btn" data-product="B">Добавить в корзину</button>
+            </div>
+            <div class="product">
+                <div class="product-title">Тестовый продукт C</div>
+                <div>Краткое описание «товара» C. Просто текст-заглушка.</div>
+                <div class="product-price">1990 ₽</div>
+                <button class="btn btn-primary product-btn" data-product="C">Добавить в корзину</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="scroll">
+        <h2>Длинный текст для карты скроллинга</h2>
+        <div class="long-text">
+            <p>
+                Этот блок нужен для того, чтобы на странице была достаточная
+                высота и пользователям приходилось активно скроллить.
+                Карта скроллинга в Яндекс.Метрике покажет, какие части текста
+                читают чаще всего.
+            </p>
+            <p>
+                Текст не несёт особой смысловой нагрузки и служит исключительно
+                учебной цели. Во время лабораторной попросите знакомых прокрутить
+                страницу до конца и задержаться на этом блоке хотя бы на несколько секунд.
+            </p>
+            <p>
+                Можно имитировать «интересный» контент: советы, описание сервиса,
+                отзывы пользователей, краткую инструкцию или FAQ. Важно, чтобы
+                были участки текста, которые находятся «выше» и «ниже» по странице —
+                тогда в карте скроллинга будет заметна разница.
+            </p>
+            <p>
+                В Яндекс.Метрике карта скроллинга отображается в виде градиента
+                по высоте страницы. Самые просматриваемые области подсвечиваются
+                более тёплыми цветами. Если пользователи в основном доходят
+                только до середины страницы, нижние блоки будут «холодными».
+            </p>
+            <p>
+                Эксперимент: попросите часть знакомых просто открыть сайт и немного
+                прокрутить, а другую часть — пролистать до абсолютно конца и
+                внимательно почитать текст. После этого сравните данные
+                по карте скроллинга.
+            </p>
+            <p>
+                Дополнительный текст. Можно просто продублировать похожие абзацы,
+                чтобы увеличить объём содержимого и сделать поведение пользователей
+                более разнообразным. Для лабораторной этого достаточно.
+            </p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Форма обратной связи (для аналитики форм)</h2>
+        <div class="form-grid">
+            <div>
+                <form id="feedback-form">
+                    <label for="name">Имя</label>
+                    <input id="name" name="name" type="text" placeholder="Введите ваше имя" />
+
+                    <label for="email">E-mail</label>
+                    <input id="email" name="email" type="email" placeholder="example@mail.ru" />
+
+                    <label for="topic">Тема обращения</label>
+                    <select id="topic" name="topic">
+                        <option value="">Выберите вариант</option>
+                        <option value="analytics">Вопрос по аналитике</option>
+                        <option value="design">Предложение по дизайну</option>
+                        <option value="bug">Сообщение об ошибке</option>
+                        <option value="other">Другое</option>
+                    </select>
+
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" name="message" placeholder="Опишите, что вам понравилось или не понравилось на сайте."></textarea>
+
+                    <div class="checkbox-row">
+                        <input id="subscribe" name="subscribe" type="checkbox" />
+                        <label for="subscribe">Подписаться на тестовую рассылку (мок)</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+            <div>
+                <p style="font-size: 14px; margin-bottom: 8px;">
+                    Эта форма не отправляет данные на сервер и нужна только
+                    для отработки аналитики форм в Яндекс.Метрике.
+                </p>
+                <p style="font-size: 14px; margin-bottom: 8px;">
+                    Попросите знакомых:
+                </p>
+                <ul style="font-size: 14px; margin-left: 18px; margin-bottom: 8px;">
+                    <li>Начать заполнять поля, но не отправлять форму.</li>
+                    <li>Полностью заполнить и «отправить» форму.</li>
+                    <li>Кликнуть по разным элементам, переключать тему обращения.</li>
+                </ul>
+                <p style="font-size: 14px;">
+                    В отчётах Метрики вы увидите, какие поля трогали чаще всего,
+                    на каких полях пользователи «отваливаются» и сколько было
+                    успешных отправок.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    Учебный сайт для лабораторной по Яндекс.Метрике.
+</footer>
+
+<script>
+    document.getElementById('hero-demo-btn').addEventListener('click', function () {
+        alert('Это учебный сайт. Действие кнопки имитировано.');
+    });
+
+    document.getElementById('hero-secondary-btn').addEventListener('click', function () {
+        window.location.hash = '#features';
+    });
+
+    document.querySelectorAll('.product-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const product = this.dataset.product;
+            alert('Тестовый продукт ' + product + ' добавлен в мок-корзину.');
+        });
+    });
+
+    document.getElementById('feedback-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Форма отправлена (учебно, без сервера). Спасибо!');
+        this.reset();
+    });
+</script>
+</body>
+</html>
